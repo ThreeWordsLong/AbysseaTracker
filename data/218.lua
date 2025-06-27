@@ -1,0 +1,27 @@
+return {
+    Names = {
+        ['Amarok'] = { Name = 'Amarok' },
+        ['Ansherekh'] = { Name = 'Ansherekh' },
+        ['Battlerigged Chariot'] = { Name = 'Battlerigged Chariot' },
+        ['Bennu'] = { Name = 'Bennu' },
+        ['Brulo'] = { Name = 'Brulo' },
+        ['Bugul Noz'] = { Name = 'Bugul Noz' },
+        ['Chickcharney'] = { Name = 'Chickcharney' },
+        ['Cuijatender'] = { Name = 'Cuijatender' },
+        ['Dragua'] = { Name = 'Dragua' },
+        ['Emperador de Altepa'] = { Name = 'Emperador de Altepa' },
+        ['Hazhdiha'] = { Name = 'Hazhdiha' },
+        ['Hedjedjet'] = { Name = 'Hedjedjet' },
+        ['Ironclad Smiter'] = { Name = 'Ironclad Smiter' },
+        ['Koios'] = { Name = 'Koios' },
+        ['Long-Barreled Chariot'] = { Name = 'Long-Barreled Chariot' },
+        ['Orthrus'] = { Name = 'Orthrus' },
+        ['Ouzelum'] = { Name = 'Ouzelum' },
+        ['Rani'] = { Name = 'Rani' },
+        ['Sharabha'] = { Name = 'Sharabha' },
+        ['Shaula'] = { Name = 'Shaula' },
+        ['Tablilla'] = { Name = 'Tablilla' },
+        ['Vadleany'] = { Name = 'Vadleany' },
+        ['Waugyl'] = { Name = 'Waugyl' },
+    }
+}

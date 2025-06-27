@@ -1,0 +1,27 @@
+return {
+    Names = {
+        ['Alfard'] = { Name = 'Alfard' },
+        ['Amphitrite'] = { Name = 'Amphitrite' },
+        ['Assailer Chariot'] = { Name = 'Assailer Chariot' },
+        ['Azdaja'] = { Name = 'Azdaja' },
+        ['Bomblix Flamefinger'] = { Name = 'Bomblix Flamefinger' },
+        ['Burstrox Powderpate'] = { Name = 'Burstrox Powderpate' },
+        ['Deelgeed'] = { Name = 'Deelgeed' },
+        ['Fleshflayer Killakriq'] = { Name = 'Fleshflayer Killakriq' },
+        ['Fuath'] = { Name = 'Fuath' },
+        ['Gamayun'] = { Name = 'Gamayun' },
+        ['Ika-Roa'] = { Name = 'Ika-Roa' },
+        ['Ironclad Sunderer'] = { Name = 'Ironclad Sunderer' },
+        ['Jaculus'] = { Name = 'Jaculus' },
+        ['Lorelei'] = { Name = 'Lorelei' },
+        ['Maere'] = { Name = 'Maere' },
+        ['Melo Melo'] = { Name = 'Melo Melo' },
+        ['Minaruja'] = { Name = 'Minaruja' },
+        ['Ningishzida'] = { Name = 'Ningishzida' },
+        ['Raja'] = { Name = 'Raja' },
+        ['Rencounter Chariot'] = { Name = 'Rencounter Chariot' },
+        ['Teekesselchen'] = { Name = 'Teekesselchen' },
+        ['Teugghia'] = { Name = 'Teugghia' },
+        ['Xibalba'] = { Name = 'Xibalba' },
+    }
+}

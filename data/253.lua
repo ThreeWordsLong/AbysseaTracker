@@ -1,0 +1,27 @@
+return {
+    Names = {
+        ['Apademak'] = { Name = 'Apademak' },
+        ['Audumbla'] = { Name = 'Audumbla' },
+        ['Awahondo'] = { Name = 'Awahondo' },
+        ['Blanga'] = { Name = 'Blanga' },
+        ['Chillwing Hwitti'] = { Name = 'Chillwing Hwitti' },
+        ['Chione'] = { Name = 'Chione' },
+        ['Dhorme Khimaira'] = { Name = 'Dhorme Khimaira' },
+        ['Empousa'] = { Name = 'Empousa' },
+        ['Frost Bomb Mk-II'] = { Name = 'Frost Bomb Mk-II' },
+        ['Impervious Chariot'] = { Name = 'Impervious Chariot' },
+        ['Indrik'] = { Name = 'Indrik' },
+        ['Ironclad Triturator'] = { Name = 'Ironclad Triturator' },
+        ['Isgebind'] = { Name = 'Isgebind' },
+        ['Koghatu'] = { Name = 'Koghatu' },
+        ['Kur'] = { Name = 'Kur' },
+        ['Ogopogo'] = { Name = 'Ogopogo' },
+        ['Pantokrator'] = { Name = 'Pantokrator' },
+        ['Refitted Chariot'] = { Name = 'Refitted Chariot' },
+        ['Resheph'] = { Name = 'Resheph' },
+        ['Sisyphus'] = { Name = 'Sisyphus' },
+        ['Upas-Kamuy'] = { Name = 'Upas-Kamuy' },
+        ['Veri Selen'] = { Name = 'Veri Selen' },
+        ['Yaguarogui'] = { Name = 'Yaguarogui' },
+    }
+}
