@@ -25,11 +25,10 @@ addon.state = {
 }
 
 addon.settings = {
-        debug = false,
         hide = false,
 }
 
-addon.log_level = 1 -- Default log level (1 = DEBUG, 2 = INFO, 3 = WARNING, 4 = ERROR)
+addon.log_level = 2 -- Default log level (1 = DEBUG, 2 = INFO, 3 = WARNING, 4 = ERROR)
 
 require('helpers')
 local pm = require('PacketManager')
