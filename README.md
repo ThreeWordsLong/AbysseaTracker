@@ -14,6 +14,37 @@ An **Ashita v4 addon** to assist with **tracking and identifying Yellow, Blue, a
 
 ---
 
+## Installation & Usage
+
+### Installation
+
+1. Download or clone the `AbysseaTracker` folder into your **Ashita v4 `addons` directory**:  
+   Example path: `/path/to/Ashita/addons/AbysseaTracker`
+
+### Loading the Addon
+
+1. Start **Ashita v4** and log into the game.
+2. In-game, use the command `/addon load abysseatracker`
+3. Once loaded, the addon will automatically begin tracking NMs when in Abyssea Zones.
+
+- The GUI window will automatically hide/show depending on if an NM is targeted or has enmity towards the party.
+
+---
+
+
+##  TODO / Known Limitations
+
+- [ ] **Handle NM being immune during casting/readies**  
+  When an NM is actively casting or readying an ability, it's often immune to proc triggers. The addon should delay or ignore proc checks during these states.
+
+- [ ] **Improve proc window accuracy on addon reloads**  
+  If the addon is reloaded after a mob is already pulled, the timestamp resets, potentially leading to an incorrect proc window being assumed (e.g., wrong day/hour filters).
+
+- [ ] **Retroactive hint validation by logging all actions**  
+  To address the above, track all spells/abilities used even if filtered out at the time. If a hint later revalidates the category, we can retroactively check if a valid action was already taken.
+
+---
+
 ## How It Works
 
 The addon begins tracking an NM when **any** of the following occurs:
