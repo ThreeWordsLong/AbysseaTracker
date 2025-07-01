@@ -1,25 +1,30 @@
 
-local stagger_data = {}
+local StaggerData = {}
 
-stagger_data.element_by_id = T{
+StaggerData.elementByID = T{
     [1] = 'fire', [2] = 'earth', [3] = 'water', [4] = 'wind',
     [5] = 'ice', [6] = 'lightning', [7] = 'light', [8] = 'darkness'
 }
 
-stagger_data.skills_by_id = T{
+StaggerData.daysByID = T{
+    [1] = 'firesday', [2] = 'earthsday', [3] = 'watersday', [4] = 'windsday',
+    [5] = 'iceday', [6] = 'lightningday', [7] = 'lightsday', [8] = 'darksday'
+}
+
+StaggerData.skillsByID = T{
     [1]  = 'hand-to-hand', [2]  = 'dagger', [3]  = 'sword', [4]  = 'great sword',
     [5]  = 'axe',          [6]  = 'great axe', [7]  = 'scythe', [8]  = 'polearm',
     [9]  = 'katana',       [10] = 'great katana', [11] = 'club', [12] = 'staff',
     [25] = 'archery',      [26] = 'marksmanship'
 }
 
-stagger_data.element_by_name = T{}
-for id, name in pairs(stagger_data.element_by_id) do
-    stagger_data.element_by_name[name] = id
+StaggerData.elementByName = T{}
+for id, name in pairs(StaggerData.elementByID) do
+    StaggerData.elementByName[name] = id
 end
 
 -- Yellow Stagger - Spells associated with the current day, the previous day, and the following day can trigger Yellow stagger. 
-stagger_data.spells_by_id = T{
+StaggerData.spellsByID = T{
     [21]  = { id = 21,  Name = "Holy",            element = 7, type = "White Magic" },
     [29]  = { id = 29,  Name = "Banish II",       element = 7, type = "White Magic" },
     [30]  = { id = 30,  Name = "Banish III",      element = 7, type = "White Magic" },
@@ -77,7 +82,7 @@ stagger_data.spells_by_id = T{
 }
 
 -- Red Stagger - caused by using specific elemental weapon skills
-stagger_data.ele_ws_by_id = T{
+StaggerData.eleWSByID = T{
     [20]  = { id = 20,  Name = "Cyclone",          element = 4, skill = 2  },
     [22]  = { id = 22,  Name = "Energy Drain",     element = 8, skill = 2  },
     [34]  = { id = 34,  Name = "Red Lotus Blade",  element = 1, skill = 3  },
@@ -94,7 +99,7 @@ stagger_data.ele_ws_by_id = T{
 }   
 
 -- Blue Stagger - The in-game time of day (when the NM was claimed or force-spawned) determines which weapon type is eligible: 06:00 to 14:00 — Piercing weapon skills, 14:00 to 22:00 — Slashing weapon skills, 22:00 to 06:00 — Blunt weapon skills
-stagger_data.phys_ws_by_id = T{
+StaggerData.physWSByID = T{
     [5]   = { id = 5,   Name = "Raging Fists",     skill = 1 },
     [6]   = { id = 6,   Name = "Spinning Attack",  skill = 1 },
     [7]   = { id = 7,   Name = "Howling Fist",     skill = 1 },
@@ -142,7 +147,7 @@ stagger_data.phys_ws_by_id = T{
     [215] = { id = 215, Name = "Detonator",        skill = 26 },
 }
 
-stagger_data.combat_skills = T{
+StaggerData.combatSkills = T{
     [1]  = { id = 1,  Name = "hand-to-hand", category = "blunt" },
     [2]  = { id = 2,  Name = "dagger",        category = "piercing" },
     [3]  = { id = 3,  Name = "sword",         category = "slashing" },
@@ -160,50 +165,50 @@ stagger_data.combat_skills = T{
 }
 
 
-for _, ws in pairs(stagger_data.phys_ws_by_id) do
+for _, ws in pairs(StaggerData.physWSByID) do
     local skill_id = ws.skill
-    local skill_data = stagger_data.combat_skills[skill_id]
+    local skill_data = StaggerData.combatSkills[skill_id]
     if skill_data then
         ws.category = skill_data.category
     end
 end
 
-stagger_data.ws_by_category = T{}
-stagger_data.phys_ws_by_skill = T{}
+StaggerData.physWSByCategory = T{}
+StaggerData.physWSBySkill = T{}
 
-for id, ws in pairs(stagger_data.phys_ws_by_id) do
+for id, ws in pairs(StaggerData.physWSByID) do
     local category = ws.category
     if category then
-        stagger_data.ws_by_category[category] = stagger_data.ws_by_category[category] or T{}
-        stagger_data.ws_by_category[category][id] = ws
+        StaggerData.physWSByCategory[category] = StaggerData.physWSByCategory[category] or T{}
+        StaggerData.physWSByCategory[category][id] = ws
     end
 
     local skill_id = ws.skill
     if skill_id then
-        stagger_data.phys_ws_by_skill[skill_id] = stagger_data.phys_ws_by_skill[skill_id] or T{}
-        stagger_data.phys_ws_by_skill[skill_id][id] = ws
+        StaggerData.physWSBySkill[skill_id] = StaggerData.physWSBySkill[skill_id] or T{}
+        StaggerData.physWSBySkill[skill_id][id] = ws
     end
     
 end
 
-stagger_data.spells_by_element = T{}
+StaggerData.spellsByElement = T{}
 
-for id, spell in pairs(stagger_data.spells_by_id) do
+for id, spell in pairs(StaggerData.spellsByID) do
     local element_id = spell.element
     if element_id then
-        stagger_data.spells_by_element[element_id] = stagger_data.spells_by_element[element_id] or T{}
-        stagger_data.spells_by_element[element_id][id] = spell
+        StaggerData.spellsByElement[element_id] = StaggerData.spellsByElement[element_id] or T{}
+        StaggerData.spellsByElement[element_id][id] = spell
     end
 end
 
-stagger_data.ele_ws_by_element = T{}
+StaggerData.eleWSByElement = T{}
 
-for id, ws in pairs(stagger_data.ele_ws_by_id) do
+for id, ws in pairs(StaggerData.eleWSByID) do
     local element_id = ws.element
     if element_id then
-        stagger_data.ele_ws_by_element[element_id] = stagger_data.ele_ws_by_element[element_id] or T{}
-        stagger_data.ele_ws_by_element[element_id][id] = ws
+        StaggerData.eleWSByElement[element_id] = StaggerData.eleWSByElement[element_id] or T{}
+        StaggerData.eleWSByElement[element_id][id] = ws
     end
 end
 
-return stagger_data
+return StaggerData
