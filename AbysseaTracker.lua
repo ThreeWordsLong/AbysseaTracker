@@ -7,7 +7,7 @@
 
 addon.name    = 'AbysseaTracker';
 addon.author  = 'Knautz';
-addon.version = '0.5';
+addon.version = '1.0';
 addon.desc    = 'Helps players track and stagger triggers for Abyssea NMs';
 addon.link    = 'https://ashitaxi.com/';
 
