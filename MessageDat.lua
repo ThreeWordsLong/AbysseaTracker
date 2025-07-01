@@ -5,6 +5,10 @@ local ffi = require('ffi');
 local cache = false;
 local messageDatData = {};
 
+local function ClearCache()
+    messageDatData = {};
+end 
+
 local function LoadMessageDatByPath(datPath)
     local dat = io.open(datPath, 'rb');
     if not dat then return; end
@@ -135,6 +139,7 @@ local exports = {
     GetZoneMessage = GetZoneMessage,
     LoadMessageDat = LoadMessageDat,
     PreprocessZoneMessages = PreprocessZoneMessages,
+    ClearCache = ClearCache,
 };
 
 

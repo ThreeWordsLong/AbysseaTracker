@@ -108,6 +108,7 @@ end
 
 
 local function LoadProcs(zoneId)
+    messageDat.ClearCache()
     AbysseaProcMessages = T{}
     local success, result = pcall(function()
         return messageDat.PreprocessZoneMessages(zoneId, function(msg)
