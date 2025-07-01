@@ -55,14 +55,45 @@ local skillCategoryColors = {
 }
 
 
-local function ColoredHeader(color, label)
+local function ColoredHeader(color, label, key)
+    local id = imgui.GetID(key or label)
+
     imgui.PushStyleColor(ImGuiCol_Header, color)
     if color == colors.yellow then
         imgui.PushStyleColor(ImGuiCol_Text, colors.gray)
     end
-    local open = imgui.CollapsingHeader(label, imgui.TreeNodeFlags_DefaultOpen)
+
+
+    local open = imgui.CollapsingHeader(label, bit.bor(ImGuiTreeNodeFlags_DefaultOpen, ImGuiTreeNodeFlags_CollapsingHeader))
+
     imgui.PopStyleColor()
+    if color == colors.yellow then imgui.PopStyleColor() end
+
     return open
+end
+
+local function deepCount(tbl)
+    local total = 0
+    for _, v in pairs(tbl) do
+        if type(v) == 'table' then
+            total = total + deepCount(v)
+        else
+            total = total + 1
+        end
+    end
+    return total
+end
+
+local function sortCategoriesByCountThenAlpha(grouped)
+    local keys = T{}
+    for k, v in pairs(grouped) do
+        local count = deepCount(v)
+        table.insert(keys, { key = k, count = count })
+    end
+    table.sort(keys, function(a, b)
+        return (a.count > b.count) or (a.count == b.count and a.key < b.key)
+    end)
+    return keys
 end
 
 
@@ -100,11 +131,10 @@ local function drawRedProcs(mob)
     end
 
     if imgui.BeginTable("RedProcsTable", 3) then
-        local sortedSkills = T{}
-        for skill in pairs(grouped) do table.insert(sortedSkills, skill) end
-        table.sort(sortedSkills, function(a, b) return a < b end)
+        local sortedSkills = sortCategoriesByCountThenAlpha(grouped)
 
-        for _, skillName in pairs(sortedSkills) do
+        for _, entry in ipairs(sortedSkills) do
+            local skillName = entry.key
             imgui.TableNextColumn()
             imgui.TextColored({1.0, 0.8, 0.6, 1.0}, capitalizeWords(skillName))
             imgui.Indent()
@@ -147,13 +177,13 @@ local function drawBlueProcs(mob)
     end
 
     -- Sort keys
-    local sortedSkills = T{}
-    for skillName in pairs(grouped) do table.insert(sortedSkills, skillName) end
-    table.sort(sortedSkills, function(a, b) return a < b end)
+    local sortedSkills = sortCategoriesByCountThenAlpha(grouped)
+
 
     -- Render in 3-column ImGui table
     if imgui.BeginTable("BlueProcsTable", 3) then
-        for _, skillName in pairs(sortedSkills) do
+        for _, entry in ipairs(sortedSkills) do
+            local skillName = entry.key
             imgui.TableNextColumn()
             imgui.TextColored({1.0, 0.8, 0.6, 1.0}, capitalizeWords(skillName))
             imgui.Indent()
@@ -186,11 +216,10 @@ local function drawYellowProcs(mob)
     end
 
     if imgui.BeginTable("YellowProcsTable", 3) then
-        local sortedTypes = T{}
-        for t in pairs(grouped) do table.insert(sortedTypes, t) end
-        table.sort(sortedTypes, function(a, b) return a < b end)
+        local sortedTypes = sortCategoriesByCountThenAlpha(grouped)
 
-        for _, spellType in pairs(sortedTypes) do
+        for _, entry in pairs(sortedTypes) do
+            local spellType = entry.key
             imgui.TableNextColumn()
             local color = spellTypeColors[spellType] or {1.0, 1.0, 1.0, 1.0}
             imgui.TextColored(color, capitalizeWords(spellType))
