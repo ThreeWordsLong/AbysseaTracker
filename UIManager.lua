@@ -15,6 +15,7 @@ local colors = {
     yellow = {1.0, 1.0, 0.0, 1.0},
     blue   = {0.3, 0.6, 1.0, 1.0},
     red    = {1.0, 0.4, 0.4, 1.0},
+    lightGray = {0.7, 0.7, 0.7, 1.0},
     gray = {0.4, 0.4, 0.4, 1.0},
     black = {0.0, 0.0, 0.0, 1.0},
     tan = {0.80, 0.65, 0.52, 1.0},
@@ -24,6 +25,7 @@ local colors = {
     offWhite = {1.0, 1.0, 0.8, 1.0},
     purple = {0.6, 0.1, 0.6, 1.0},
     darkGray = {0.2, 0.2, 0.2, 1.0},
+    deepIndigo = {0.2, 0.2, 0.6, 1.0},
 }
 
 local element_color_map = {
@@ -34,12 +36,12 @@ local element_color_map = {
     ice = colors.lightBlue,
     lightning = colors.pink,
     light = colors.offWhite,
-    darkness = colors.purple,
+    darkness = colors.lightGray,
 }
 
 
 local spellTypeColors = {
-    ['Black Magic'] = colors.purple,
+    ['Black Magic'] = colors.lightGray,
     ['White Magic'] = colors.offWhite,
     ['Ninjutsu']    = colors.green,
     ['Song']        = colors.lightBlue,
@@ -51,8 +53,6 @@ local skillCategoryColors = {
     blunt    = colors.tan,
     piercing = colors.lightBlue,
 }
-
-
 
 
 local function ColoredHeader(color, label)
